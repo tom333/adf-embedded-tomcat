@@ -2,29 +2,29 @@
 <References xmlns="http://xmlns.oracle.com/adf/jndi">
    <Reference name="summit_adf" className="oracle.jdeveloper.db.adapter.DatabaseProvider"
               credentialStoreKey="summit_adf" xmlns="">
-      <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
+      <Factory className="oracle.jdevimpl.db.adapter.DatabaseProviderFactory1212"/>
       <RefAddresses>
-         <StringRefAddr addrType="sid">
-            <Contents>xe</Contents>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
          </StringRefAddr>
+         <StringRefAddr addrType="oraDriverType">
+            <Contents>thin</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="hostname">
+            <Contents>localhost</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="password"/>
          <StringRefAddr addrType="subtype">
             <Contents>oraJDBC</Contents>
          </StringRefAddr>
          <StringRefAddr addrType="port">
             <Contents>1521</Contents>
          </StringRefAddr>
-         <StringRefAddr addrType="hostname">
-            <Contents>localhost</Contents>
-         </StringRefAddr>
          <StringRefAddr addrType="user">
             <Contents>summit_adf</Contents>
          </StringRefAddr>
-         <SecureRefAddr addrType="password"/>
-         <StringRefAddr addrType="DeployPassword">
-            <Contents>true</Contents>
-         </StringRefAddr>
-         <StringRefAddr addrType="oraDriverType">
-            <Contents>thin</Contents>
+         <StringRefAddr addrType="sid">
+            <Contents>xe</Contents>
          </StringRefAddr>
       </RefAddresses>
    </Reference>
