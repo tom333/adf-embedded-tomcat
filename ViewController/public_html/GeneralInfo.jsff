@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelFormLayout id="pfl1">
+    <af:inputText value="#{bindings.Id.inputValue}" label="#{bindings.Id.hints.label}"
+                  required="#{bindings.Id.hints.mandatory}" columns="#{bindings.Id.hints.displayWidth}"
+                  maximumLength="#{bindings.Id.hints.precision}" shortDesc="#{bindings.Id.hints.tooltip}" id="it1">
+      <f:validator binding="#{bindings.Id.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.Id.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
+                  required="#{bindings.LastName.hints.mandatory}" columns="#{bindings.LastName.hints.displayWidth}"
+                  maximumLength="#{bindings.LastName.hints.precision}" shortDesc="#{bindings.LastName.hints.tooltip}"
+                  id="it2">
+      <f:validator binding="#{bindings.LastName.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.FirstName.inputValue}" label="#{bindings.FirstName.hints.label}"
+                  required="#{bindings.FirstName.hints.mandatory}" columns="#{bindings.FirstName.hints.displayWidth}"
+                  maximumLength="#{bindings.FirstName.hints.precision}" shortDesc="#{bindings.FirstName.hints.tooltip}"
+                  id="it3">
+      <f:validator binding="#{bindings.FirstName.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Userid.inputValue}" label="#{bindings.Userid.hints.label}"
+                  required="#{bindings.Userid.hints.mandatory}" columns="#{bindings.Userid.hints.displayWidth}"
+                  maximumLength="#{bindings.Userid.hints.precision}" shortDesc="#{bindings.Userid.hints.tooltip}"
+                  id="it4">
+      <f:validator binding="#{bindings.Userid.validator}"/>
+    </af:inputText>
+    <af:inputDate value="#{bindings.StartDate.inputValue}" label="#{bindings.StartDate.hints.label}"
+                  required="#{bindings.StartDate.hints.mandatory}" columns="#{bindings.StartDate.hints.displayWidth}"
+                  shortDesc="#{bindings.StartDate.hints.tooltip}" id="id1"/>
+    <af:inputText value="#{bindings.ManagerId.inputValue}" label="#{bindings.ManagerId.hints.label}"
+                  required="#{bindings.ManagerId.hints.mandatory}" columns="#{bindings.ManagerId.hints.displayWidth}"
+                  maximumLength="#{bindings.ManagerId.hints.precision}" shortDesc="#{bindings.ManagerId.hints.tooltip}"
+                  id="it5">
+      <f:validator binding="#{bindings.ManagerId.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.ManagerId.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.TitleId.inputValue}" label="#{bindings.TitleId.hints.label}"
+                  required="#{bindings.TitleId.hints.mandatory}" columns="#{bindings.TitleId.hints.displayWidth}"
+                  maximumLength="#{bindings.TitleId.hints.precision}" shortDesc="#{bindings.TitleId.hints.tooltip}"
+                  id="it6">
+      <f:validator binding="#{bindings.TitleId.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.TitleId.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.DeptId.inputValue}" label="#{bindings.DeptId.hints.label}"
+                  required="#{bindings.DeptId.hints.mandatory}" columns="#{bindings.DeptId.hints.displayWidth}"
+                  maximumLength="#{bindings.DeptId.hints.precision}" shortDesc="#{bindings.DeptId.hints.tooltip}"
+                  id="it7">
+      <f:validator binding="#{bindings.DeptId.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.DeptId.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Salary.inputValue}" label="#{bindings.Salary.hints.label}"
+                  required="#{bindings.Salary.hints.mandatory}" columns="#{bindings.Salary.hints.displayWidth}"
+                  maximumLength="#{bindings.Salary.hints.precision}" shortDesc="#{bindings.Salary.hints.tooltip}"
+                  id="it8">
+      <f:validator binding="#{bindings.Salary.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.Salary.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.CommissionPct.inputValue}" label="#{bindings.CommissionPct.hints.label}"
+                  required="#{bindings.CommissionPct.hints.mandatory}"
+                  columns="#{bindings.CommissionPct.hints.displayWidth}"
+                  maximumLength="#{bindings.CommissionPct.hints.precision}"
+                  shortDesc="#{bindings.CommissionPct.hints.tooltip}" id="it9">
+      <f:validator binding="#{bindings.CommissionPct.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.CommissionPct.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
+                  required="#{bindings.Comments.hints.mandatory}" columns="#{bindings.Comments.hints.displayWidth}"
+                  maximumLength="#{bindings.Comments.hints.precision}" shortDesc="#{bindings.Comments.hints.tooltip}"
+                  id="it10">
+      <f:validator binding="#{bindings.Comments.validator}"/>
+    </af:inputText>
+    <f:facet name="footer">
+      <af:panelGroupLayout id="pgl1">
+        <af:button text="Commit" id="b1" actionListener="#{bindings.Commit.execute}"
+                   disabled="#{!bindings.Commit.enabled}" action="commit"/>
+        <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b2">
+          <af:resetActionListener/>
+        </af:button>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="s1"/>
+        </f:facet>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelFormLayout>
+</ui:composition>

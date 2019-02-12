@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="customer-task-flow-definition">
+    <default-activity id="__1">isCustomerLogin</default-activity>
+    <managed-bean id="__11">
+      <managed-bean-name id="__9">CustomersBackingBean</managed-bean-name>
+      <managed-bean-class id="__10">oracle.summit.backing.CustomersBackingBean</managed-bean-class>
+      <managed-bean-scope id="__8">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="Customers">
+      <page>/customers/Customers.jsff</page>
+    </view>
+    <method-call id="SetCurrentRowWithKeyValue">
+      <method>#{bindings.setCurrentRowWithKeyValue.execute}</method>
+      <outcome>
+        <fixed-outcome>setCurrentRowWithKey</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="isCustomerLogin">
+      <case id="__4">
+        <expression>#{securityContext.userInRole['Application Customer Role']}</expression>
+        <outcome>customerLogin</outcome>
+      </case>
+      <default-outcome>notCustomerLogin</default-outcome>
+    </router>
+    <control-flow-rule id="__2">
+      <from-activity-id>SetCurrentRowWithKeyValue</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>setCurrentRowWithKey</from-outcome>
+        <to-activity-id>Customers</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>isCustomerLogin</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>notCustomerLogin</from-outcome>
+        <to-activity-id>Customers</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>customerLogin</from-outcome>
+        <to-activity-id>SetCurrentRowWithKeyValue</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <critical/>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

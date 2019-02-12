@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.56.60" id="DataBindings" SeparateXMLFiles="false"
+             Package="oracle.summit.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/index.jsf" usageId="oracle_summit_view_indexPageDef"/>
+    <page path="/customers/Customers.jsff" usageId="oracle_summit_view_CustomersPageDef"/>
+    <page path="/orders/Orders.jsff"
+          usageId="oracle_summit_view_OrdersPageDef"/>
+    <page path="/customers/GeneralInfo.jsff" usageId="oracle_summit_view_GeneralInfoPageDef"/>
+    <page path="/customers/Address.jsff" usageId="oracle_summit_view_AddressPageDef"/>
+    <page path="/customers/Comments.jsff" usageId="oracle_summit_view_CommentsPageDef"/>
+    <page path="/orders/showshuttle.jsf" usageId="oracle_summit_view_showshuttlePageDef"/>
+    <page path="/products/showProducts.jsff" usageId="oracle_summit_view_showProductsPageDef"/>
+    <page path="/products/showInventory.jsff" usageId="oracle_summit_view_showInventoryPageDef"/>
+    <page path="/WEB-INF/flows/customers-task-flow-definition.xml#customer-task-flow-definition@SetCurrentRowWithKeyValue"
+          usageId="oracle_summit_view_customers_task_flow_definition_customer_task_flow_definition_SetCurrentRowWithKeyPageDef"/>
+    <page path="/WEB-INF/flows/emp-reg-task-flow-definition.xml#emp-reg-task-flow-definition@CreateInsert"
+          usageId="oracle_summit_view_emp_reg_task_flow_definition_emp_reg_task_flow_definition_CreateInsertPageDef"/>
+    <page path="/GeneralInfo.jsff" usageId="oracle_summit_view_GeneralInfoPageDef1"/>
+    <page path="/Confirmation.jsff" usageId="oracle_summit_view_ConfirmationPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="oracle_summit_view_CustomersPageDef"
+          path="oracle.summit.view.pageDefs.CustomersPageDef"/>
+    <page id="oracle_summit_view_indexPageDef"
+          path="oracle.summit.view.pageDefs.indexPageDef"/>
+    <page id="oracle_summit_view_OrdersPageDef"
+          path="oracle.summit.view.pageDefs.OrdersPageDef"/>
+    <page id="oracle_summit_view_testPageDef"
+          path="oracle.summit.view.pageDefs.testPageDef"/>
+    <page id="oracle_summit_view_GeneralInfoPageDef" path="oracle.summit.view.pageDefs.GeneralInfoPageDef"/>
+    <page id="oracle_summit_view_AddressPageDef" path="oracle.summit.view.pageDefs.AddressPageDef"/>
+    <page id="oracle_summit_view_CommentsPageDef" path="oracle.summit.view.pageDefs.CommentsPageDef"/>
+    <page id="oracle_summit_view_showshuttlePageDef" path="oracle.summit.view.pageDefs.showshuttlePageDef"/>
+    <page id="oracle_summit_view_showProductsPageDef" path="oracle.summit.view.pageDefs.showProductsPageDef"/>
+    <page id="oracle_summit_view_showInventoryPageDef" path="oracle.summit.view.pageDefs.showInventoryPageDef"/>
+    <page id="oracle_summit_view_customers_task_flow_definition_customer_task_flow_definition_SetCurrentRowWithKeyPageDef"
+          path="flows.customers_task_flow_definition_customer_task_flow_definition_SetCurrentRowWithKeyPageDef"/>
+    <page id="oracle_summit_view_emp_reg_task_flow_definition_emp_reg_task_flow_definition_CreateInsertPageDef"
+          path="flows.emp_reg_task_flow_definition_emp_reg_task_flow_definition_CreateInsertPageDef"/>
+    <page id="oracle_summit_view_GeneralInfoPageDef1" path="oracle.summit.view.pageDefs.GeneralInfoPageDef1"/>
+    <page id="oracle_summit_view_ConfirmationPageDef" path="oracle.summit.view.pageDefs.ConfirmationPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="BackOfficeAppModuleDataControl"
+                     Package="oracle.summit.model.services"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="BackOfficeAppModuleLocal"
+                     syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

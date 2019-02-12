@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core" xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces" xmlns:ui="http://java.sun.com/jsf/facelets">
+  <af:decorativeBox id="db1">
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1">
+        <dvt:pieGraph shortDesc="Pie" id="graph1" value="#{bindings.InventoryVO1.graphModel}" subType="PIE"
+                      threeDEffect="true" animationOnDisplay="auto" seriesEffect="SE_GRADIENT"
+                      dynamicResize="DYNAMIC_SIZE" dataSelection="single" seriesRolloverBehavior="RB_HIGHLIGHT">
+          <dvt:background>
+            <dvt:specialEffects/>
+          </dvt:background>
+          <dvt:graphPieFrame/>
+          <dvt:seriesSet>
+            <dvt:series/>
+          </dvt:seriesSet>
+          <dvt:legendTitle text="Warehouse"/>
+          <dvt:graphFootnote text="Footnote"/>
+          <dvt:sliceLabel/>
+          <dvt:pieLabel rendered="true"/>
+          <dvt:graphSubtitle/>
+          <dvt:graphTitle/>
+          <dvt:attributeFormat name="WarehouseId" id="af1">
+            <af:convertNumber pattern="#{bindings.InventoryVO1.hints.WarehouseId.format}" groupingUsed="false"/>
+          </dvt:attributeFormat>
+          <dvt:attributeFormat name="AmountInStock" id="af2">
+            <af:convertNumber pattern="#{bindings.InventoryVO1.hints.AmountInStock.format}" groupingUsed="false"/>
+          </dvt:attributeFormat>
+        </dvt:pieGraph>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:decorativeBox>
+</ui:composition>

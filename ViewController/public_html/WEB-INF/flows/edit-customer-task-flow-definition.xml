@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="edit-customer-task-flow-definition">
+    <default-activity>GeneralInfo</default-activity>
+    <transaction>
+      <requires-transaction/>
+    </transaction>
+    <managed-bean id="__1">
+      <managed-bean-name>GeneralInfoBackingBean</managed-bean-name>
+      <managed-bean-class>oracle.summit.backing.GeneralInfoBackingBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="GeneralInfo">
+      <page>/customers/GeneralInfo.jsff</page>
+      <train-stop>
+        <display-name>General Information</display-name>
+        <sequential>false</sequential>
+      </train-stop>
+    </view>
+    <view id="Address">
+      <page>/customers/Address.jsff</page>
+      <train-stop>
+        <display-name>Address</display-name>
+        <sequential>false</sequential>
+      </train-stop>
+    </view>
+    <view id="Comments">
+      <page>/customers/Comments.jsff</page>
+      <train-stop>
+        <display-name>Comments</display-name>
+        <sequential>false</sequential>
+      </train-stop>
+    </view>
+    <train/>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

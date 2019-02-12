@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.63.66"
+                id="customers_task_flow_definition_customer_task_flow_definition_SetCurrentRowWithKeyPageDef"
+                Package="flows" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="Customers" RangeSize="25" DataControl="BackOfficeAppModuleDataControl" id="CustomersIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="CustomersIterator" id="setCurrentRowWithKeyValue" RequiresUpdateModel="false"
+            Action="setCurrentRowWithKeyValue">
+      <NamedData NDName="rowKey" NDValue="#{securityContext.userName}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

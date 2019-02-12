@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.61.86" id="showshuttlePageDef"
+                Package="orders">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ItemsForOrder" RangeSize="25" DataControl="BackOfficeAppModuleDataControl"
+              id="ItemsForOrderIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="ItemsForOrderIterator" StaticList="false" Uses="LOV_ProductId" id="ProductId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <action IterBinding="ItemsForOrderIterator" id="CreateInsert"
+            RequiresUpdateModel="true" Action="createInsertRow">
+    </action>
+  </bindings>
+</pageDefinition>

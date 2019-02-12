@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <MethodCall
+      id="MethodCall2">
+      <property
+         name="activityId">CreateInsert</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>CreateInsert&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">219.5</property>
+      <property
+         name="x">130.01465</property>
+   </MethodCall>
+   <View
+      id="View3">
+      <property
+         name="activityId">GeneralInfo</property>
+      <property
+         name="page">/GeneralInfo.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>GeneralInfo&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">206.59766</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">330.0</property>
+   </View>
+   <View
+      id="View4">
+      <property
+         name="activityId">Confirmation</property>
+      <property
+         name="page">/Confirmation.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>Confirmation&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">201.59766</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">536.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase5"
+      from="MethodCall2"
+      to="View3">
+      <property
+         name="fromOutcome">CreateInsert</property>
+      <property
+         name="sdm:polyPoints">R50,171.01465,219.14941,289.0,206.24707,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="View3"
+      to="View4">
+      <property
+         name="fromOutcome">commit</property>
+      <property
+         name="sdm:polyPoints">R50,371.0,206.24707,495.0,201.24707,L50</property>
+   </ControlFlowCase>
+</SDM>

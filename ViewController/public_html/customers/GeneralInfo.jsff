@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets">
+  <af:panelGroupLayout id="pgl1">
+    <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="t1"/>
+    <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tbb1"/>
+    <af:panelFormLayout id="pfl1" rows="3">
+      <af:inputText value="#{bindings.Id.inputValue}" label="#{bindings.Id.hints.label}"
+                    required="#{bindings.Id.hints.mandatory}" columns="#{bindings.Id.hints.displayWidth}"
+                    maximumLength="#{bindings.Id.hints.precision}" shortDesc="#{bindings.Id.hints.tooltip}" id="it1">
+        <f:validator binding="#{bindings.Id.validator}"/>
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.Id.format}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.Name.inputValue}" label="#{bindings.Name.hints.label}"
+                    required="#{bindings.Name.hints.mandatory}" columns="#{bindings.Name.hints.displayWidth}"
+                    maximumLength="#{bindings.Name.hints.precision}" shortDesc="#{bindings.Name.hints.tooltip}"
+                    id="it2">
+        <f:validator binding="#{bindings.Name.validator}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.Phone.inputValue}" label="#{bindings.Phone.hints.label}"
+                    required="#{bindings.Phone.hints.mandatory}" columns="#{bindings.Phone.hints.displayWidth}"
+                    maximumLength="#{bindings.Phone.hints.precision}" shortDesc="#{bindings.Phone.hints.tooltip}"
+                    id="it3">
+        <f:validator binding="#{bindings.Phone.validator}"/>
+      </af:inputText>
+      <af:selectOneChoice value="#{bindings.CreditRatingId.inputValue}" label="#{bindings.CreditRatingId.label}"
+                          required="#{bindings.CreditRatingId.hints.mandatory}"
+                          shortDesc="#{bindings.CreditRatingId.hints.tooltip}" id="soc1"
+                          binding="#{backingBeanScope.GeneralInfoBackingBean.creditRating}" autoSubmit="true">
+        <f:selectItems value="#{bindings.CreditRatingId.items}" id="si1"/>
+      </af:selectOneChoice>
+      <af:inputListOfValues id="salesRepIdId" popupTitle="Search and Select: #{bindings.SalesRepId.hints.label}"
+                            value="#{bindings.SalesRepId.inputValue}" label="#{bindings.SalesRepId.hints.label}"
+                            model="#{bindings.SalesRepId.listOfValuesModel}"
+                            required="#{bindings.SalesRepId.hints.mandatory}"
+                            columns="#{bindings.SalesRepId.hints.displayWidth}"
+                            shortDesc="#{bindings.SalesRepId.hints.tooltip}" autoSubmit="true">
+        <f:validator binding="#{bindings.SalesRepId.validator}"/>
+      </af:inputListOfValues>
+      <af:inputText value="#{bindings.LastName.inputValue}" label="#{bindings.LastName.hints.label}"
+                    required="#{bindings.LastName.hints.mandatory}" columns="#{bindings.LastName.hints.displayWidth}"
+                    maximumLength="#{bindings.LastName.hints.precision}" shortDesc="#{bindings.LastName.hints.tooltip}"
+                    id="it4" partialTriggers="salesRepIdId">
+        <f:validator binding="#{bindings.LastName.validator}"/>
+      </af:inputText>
+      <af:panelGroupLayout id="pgl4" layout="horizontal" partialTriggers="soc1">
+        <af:iterator id="i2" value="#{backingBeanScope.GeneralInfoBackingBean.starRating}" var="eachStar">
+          <af:image source="/images/icons/#{eachStar}" id="i3"/>
+        </af:iterator>
+      </af:panelGroupLayout>
+    </af:panelFormLayout>
+  </af:panelGroupLayout>
+</ui:composition>

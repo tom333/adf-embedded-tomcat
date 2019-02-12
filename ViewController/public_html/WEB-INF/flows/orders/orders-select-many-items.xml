@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="orders-select-many-items">
+    <default-activity>showshuttle</default-activity>
+    <transaction>
+      <requires-transaction/>
+    </transaction>
+    <task-flow-reentry>
+      <reentry-allowed/>
+    </task-flow-reentry>
+    <managed-bean id="__3">
+      <managed-bean-name>ShuttleBean</managed-bean-name>
+      <managed-bean-class>oracle.summit.backing.ShuttleBean</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="showshuttle">
+      <page>/orders/showshuttle.jsf</page>
+    </view>
+    <task-flow-return id="commit">
+      <outcome>
+        <name>commit</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="rollback">
+      <outcome>
+        <name>rollback</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <control-flow-rule id="__1">
+      <from-activity-id>showshuttle</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>commit</from-outcome>
+        <to-activity-id>commit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>rollback</from-outcome>
+        <to-activity-id>rollback</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

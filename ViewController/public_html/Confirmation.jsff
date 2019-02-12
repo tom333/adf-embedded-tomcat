@@ -1,0 +1,4 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+<af:outputText value="Congratulations #{bindings.FirstName} #{bindings.LastName}! You have successfully registered. Your temporary username is 'cmagee' and password 'welcome1'." id="ot1"/>
+</ui:composition>

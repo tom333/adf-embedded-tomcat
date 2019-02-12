@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.61.86" id="CommentsPageDef"
+                Package="oracle.summit.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Customers" RangeSize="25" DataControl="BackOfficeAppModuleDataControl" id="CustomersIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="CustomersIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

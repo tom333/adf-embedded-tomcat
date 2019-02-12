@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Select Products To Order" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:selectManyShuttle id="sms1" value="#{backingBeanScope.ShuttleBean.selectedProducts}"
+                                  leadingHeader="All available products" trailingHeader="Selected products">
+                <f:selectItems value="#{bindings.ProductId.items}" id="si1"/>
+            </af:selectManyShuttle>
+            <af:button text="Done" id="b1" action="commit"
+                       actionListener="#{backingBeanScope.ShuttleBean.onAddMultipleProducts}"
+                       partialTriggers="sms1" inlineStyle="margin:10px;"/>
+            <af:button text="Cancel" id="b2" immediate="true" action="rollback"/>
+        </af:form>
+    </af:document>
+</f:view>

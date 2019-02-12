@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="create-edit-orders-task-flow-definition">
+    <default-activity id="__1">Orders</default-activity>
+    <transaction>
+      <requires-transaction/>
+    </transaction>
+    <managed-bean id="__9">
+      <managed-bean-name>OrdersBackingBean</managed-bean-name>
+      <managed-bean-class>oracle.summit.backing.OrdersBackingBean</managed-bean-class>
+      <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
+    <view id="Orders">
+      <page>/orders/Orders.jsff</page>
+    </view>
+    <task-flow-return id="exit">
+      <outcome id="__2">
+        <name>exit</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-call id="orders-select-many-items">
+      <task-flow-reference>
+        <document>/WEB-INF/flows/orders/orders-select-many-items.xml</document>
+        <id>orders-select-many-items</id>
+      </task-flow-reference>
+      <run-as-dialog>
+        <display-type>
+          <inline-popup/>
+        </display-type>
+      </run-as-dialog>
+    </task-flow-call>
+    <control-flow-rule id="__3">
+      <from-activity-id id="__4">Orders</from-activity-id>
+      <control-flow-case id="__5">
+        <from-outcome id="__7">exit</from-outcome>
+        <to-activity-id id="__6">exit</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__8">
+        <from-outcome>selectmultipleitems</from-outcome>
+        <to-activity-id>orders-select-many-items</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document id="d1">
+    <af:messages id="m1"/>
+    <af:form id="f1">
+      <af:pageTemplate viewId="/oracle/templates/threeColumnTemplate.jspx"
+                       id="pt1">
+        <f:facet name="center">
+          <af:panelStretchLayout id="ph1" bottomHeight="10px" topHeight="20px"
+                                 endWidth="10px" startWidth="10px">
+            <f:facet name="top">
+              <af:panelGroupLayout id="pgl1">
+                <af:outputText value="You are currently logged in as #{securityContext.userName} " id="ot6"
+                               rendered="#{securityContext.authenticated}"/>
+                <af:link text="Logout" id="l1" rendered="#{securityContext.authenticated}"
+                         partialSubmit="true" immediate="false" action="#{login.logout}"/>
+                <af:link text="Login" id="l2" rendered="#{!securityContext.authenticated}"
+                         shortDesc="You can login either as 'cmagee' (as employee) or '214' (as Customer Ojibway Retail) with password 'welcome1'">
+                  <af:showPopupBehavior popupId="p1" triggerType="action" align="startAfter" alignId="l2"/>
+                </af:link>
+                <af:spacer width="10" height="10" id="s2"/>
+                <af:link text="Register as Employee" id="l3" action="#{WelcomePageBean.employeeregistrationtaskflow}">
+                  <af:setActionListener from="true" to="#{WelcomePageBean.isRegistration}"/>
+                </af:link>
+                <af:spacer width="10" height="10" id="s1"/>
+                <af:link text="Register as Customer" id="l4" action="#{WelcomePageBean.customerregistrationtaskflow}">
+                  <af:setActionListener from="true" to="#{WelcomePageBean.isRegistration}"/>
+                </af:link>
+                <af:popup id="p1" binding="#{WelcomePageBean.popupP1}">
+                  <af:dialog id="d2" title="Please Login" type="okCancel" closeIconVisible="false" modal="true"
+                             stretchChildren="none" dialogListener="#{login.onLoginAction}">
+                    <af:panelFormLayout id="pfl5">
+                      <af:inputText label="Username" id="it34" columns="20" value="#{login.username}"/>
+                      <af:inputText label="Password" id="it35" secret="true" columns="20" value="#{login.password}"/>
+                      <af:message id="m2" for="it35" messageType="error"/>
+                    </af:panelFormLayout>
+                  </af:dialog>
+                </af:popup>                  
+              </af:panelGroupLayout>
+            </f:facet>
+            <f:facet name="center">
+              <af:panelTabbed id="pt2">
+                <af:showDetailItem text="Welcome" id="sdi1" disclosed="#{!securityContext.authenticated}">
+                  <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r4"
+                             rendered="#{WelcomePageBean.isRegistration}"/>
+                </af:showDetailItem>
+                <af:showDetailItem text="Summit Management" id="sdi2" stretchChildren="first"
+                                   disabled="#{!securityContext.taskflowViewable['/WEB-INF/flows/customers-task-flow-definition.xml#customer-task-flow-definition']}"
+                                   disclosed="#{securityContext.authenticated}">
+                  <af:region value="#{bindings.customertaskflowdefinition1.regionModel}" id="r1"/>
+                </af:showDetailItem>
+                <af:showDetailItem text="Inventory Control" id="sdi3"
+                                   disabled="#{!securityContext.taskflowViewable['/WEB-INF/flows/show-products-task-flow-definition.xml#show-products-task-flow-definition']}">
+                  <af:panelGroupLayout id="pgl2" layout="horizontal">
+                    <af:panelBox text="Products" id="pb1">
+                      <f:facet name="toolbar"/>
+                      <af:region value="#{bindings.showproductstaskflowdefinition1.regionModel}" id="r2"/>
+                    </af:panelBox>
+                    <af:panelBox text="Product's Inventory" id="pb2">
+                      <f:facet name="toolbar"/>
+                      <af:region value="#{bindings.productinventorytaskflowdefinition1.regionModel}" id="r3"/>
+                    </af:panelBox>
+                  </af:panelGroupLayout>
+                </af:showDetailItem>
+              </af:panelTabbed>
+            </f:facet>
+          </af:panelStretchLayout>
+        </f:facet>
+        <f:facet name="header"/>
+        <f:facet name="end"/>
+        <f:facet name="start"/>
+        <f:facet name="branding"/>
+        <f:facet name="copyright"/>
+        <f:facet name="status"/>
+        <f:attribute name="endColumnSize" value="0"/>
+        <f:attribute name="startColumnSize" value="0"/>
+      </af:pageTemplate>
+    </af:form>
+  </af:document>
+</f:view>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets">
+  <af:panelGroupLayout id="pgl1">
+    <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="t1"/>
+    <af:trainButtonBar value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="tbb1"/>
+    <af:panelFormLayout id="pfl1" rows="3">
+      <af:inputText value="#{bindings.Address.inputValue}" label="#{bindings.Address.hints.label}"
+                    required="#{bindings.Address.hints.mandatory}" columns="#{bindings.Address.hints.displayWidth}"
+                    maximumLength="#{bindings.Address.hints.precision}" shortDesc="#{bindings.Address.hints.tooltip}"
+                    id="it1">
+        <f:validator binding="#{bindings.Address.validator}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.City.inputValue}" label="#{bindings.City.hints.label}"
+                    required="#{bindings.City.hints.mandatory}" columns="#{bindings.City.hints.displayWidth}"
+                    maximumLength="#{bindings.City.hints.precision}" shortDesc="#{bindings.City.hints.tooltip}"
+                    id="it2">
+        <f:validator binding="#{bindings.City.validator}"/>
+      </af:inputText>
+      <af:inputText value="#{bindings.State.inputValue}" label="#{bindings.State.hints.label}"
+                    required="#{bindings.State.hints.mandatory}" columns="#{bindings.State.hints.displayWidth}"
+                    maximumLength="#{bindings.State.hints.precision}" shortDesc="#{bindings.State.hints.tooltip}"
+                    id="it3">
+        <f:validator binding="#{bindings.State.validator}"/>
+      </af:inputText>
+      <af:selectOneChoice value="#{bindings.CountryId.inputValue}" label="#{bindings.CountryId.label}"
+                          required="#{bindings.CountryId.hints.mandatory}"
+                          shortDesc="#{bindings.CountryId.hints.tooltip}" id="soc1">
+        <f:selectItems value="#{bindings.CountryId.items}" id="si1"/>
+      </af:selectOneChoice>
+      <af:inputText value="#{bindings.ZipCode.inputValue}" label="#{bindings.ZipCode.hints.label}"
+                    required="#{bindings.ZipCode.hints.mandatory}" columns="#{bindings.ZipCode.hints.displayWidth}"
+                    maximumLength="#{bindings.ZipCode.hints.precision}" shortDesc="#{bindings.ZipCode.hints.tooltip}"
+                    id="it4">
+        <f:validator binding="#{bindings.ZipCode.validator}"/>
+      </af:inputText>
+    </af:panelFormLayout>
+  </af:panelGroupLayout>
+</ui:composition>

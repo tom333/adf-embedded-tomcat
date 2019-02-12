@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.63.66" id="showProductsPageDef"
+                Package="oracle.summit.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ProductVO1" RangeSize="25" DataControl="BackOfficeAppModuleDataControl" id="ProductVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ProductVO1Iterator" id="ProductVO1">
+      <nodeDefinition DefName="oracle.summit.model.views.ProductVO" Name="ProductVO10">
+        <AttrNames>
+          <Item Value="Id"/>
+          <Item Value="Name"/>
+          <Item Value="ShortDesc"/>
+          <Item Value="LongtextId"/>
+          <Item Value="ImageId"/>
+          <Item Value="SuggestedWhlslPrice"/>
+          <Item Value="WhlslUnits"/>
+        </AttrNames>
+        <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+          <event name="productSelected" eventType="Currency Change Event" customPayLoad="#{bindings.Id.inputValue}"/>
+        </events>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ProductVO1Iterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

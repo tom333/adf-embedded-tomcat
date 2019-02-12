@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.63.66" id="showInventoryPageDef"
+                Package="oracle.summit.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="InventoryVO1" RangeSize="-1" DataControl="BackOfficeAppModuleDataControl"
+              id="InventoryVO1Iterator"/>
+  </executables>
+  <bindings>
+    <graph IterBinding="InventoryVO1Iterator" id="InventoryVO1" xmlns="http://xmlns.oracle.com/adfm/dvt" type="PIE">
+      <graphDataMap convert="false" leafOnly="true">
+        <series>
+          <item value="WarehouseId"/>
+          <item value="City"/>
+          <item value="ProductId"/>
+        </series>
+        <groups>
+          <data>
+            <item value="AmountInStock"/>
+          </data>
+        </groups>
+      </graphDataMap>
+    </graph>
+    <methodAction id="populateInventoryForProduct" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="populateInventoryForProduct" IsViewObjectMethod="true"
+                  DataControl="BackOfficeAppModuleDataControl"
+                  InstanceName="data.BackOfficeAppModuleDataControl.InventoryVO1">
+      <NamedData NDName="productId" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+  <eventMap xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+    <event name="productSelected">
+      <producer region="*">
+        <consumer handler="populateInventoryForProduct" region="">
+        <parameters>
+        <parameter name="productId" value="${payLoad}"/>
+        </parameters>
+        </consumer>
+      </producer>
+    </event>
+  </eventMap>
+</pageDefinition>

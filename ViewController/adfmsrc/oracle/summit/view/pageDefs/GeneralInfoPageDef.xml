@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.61.86" id="GeneralInfoPageDef"
+                Package="customers">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Customers" RangeSize="25" DataControl="BackOfficeAppModuleDataControl" id="CustomersIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="CustomersIterator" id="Id">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersIterator" id="Name">
+      <AttrNames>
+        <Item Value="Name"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="CustomersIterator" id="Phone">
+      <AttrNames>
+        <Item Value="Phone"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="CustomersIterator" StaticList="false" Uses="LOV_CreditRatingId" id="CreditRatingId"
+          DTSupportsMRU="false"/>
+    <listOfValues StaticList="false" IterBinding="CustomersIterator" Uses="LOV_SalesRepId" id="SalesRepId"/>
+    <attributeValues IterBinding="CustomersIterator" id="LastName">
+      <AttrNames>
+        <Item Value="LastName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

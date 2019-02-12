@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.64.42"
+                id="emp_reg_task_flow_definition_emp_reg_task_flow_definition_CreateInsertPageDef" Package="flows"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="SalesPeople" RangeSize="25" DataControl="BackOfficeAppModuleDataControl" id="SalesPeopleIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="SalesPeopleIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

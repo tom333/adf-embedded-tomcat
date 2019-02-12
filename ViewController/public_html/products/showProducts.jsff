@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:af="http://xmlns.oracle.com/adf/faces/rich" xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets">
+  <af:decorativeBox id="db1">
+    <f:facet name="center">
+      <af:table value="#{bindings.ProductVO1.collectionModel}" var="row" rows="#{bindings.ProductVO1.rangeSize}"
+                emptyText="#{bindings.ProductVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.ProductVO1.rangeSize}" rowBandingInterval="0"
+                selectedRowKeys="#{bindings.ProductVO1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.ProductVO1.collectionModel.makeCurrent}" rowSelection="single" id="t1"
+                columnStretching="column:c3" inlineStyle="width:inherit;" contentDelivery="lazy">
+        <af:column headerText="#{bindings.ProductVO1.hints.Id.label}" id="c1" width="60">
+          <af:outputText value="#{row.Id}" id="ot1">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.ProductVO1.hints.Id.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.ProductVO1.hints.Name.label}" id="c2">
+          <af:outputText value="#{row.Name}" id="ot2"/>
+        </af:column>
+        <af:column headerText="#{bindings.ProductVO1.hints.ShortDesc.label}" id="c3" width="170">
+          <af:outputText value="#{row.ShortDesc}" id="ot3"/>
+        </af:column>
+        <af:column headerText="#{bindings.ProductVO1.hints.SuggestedWhlslPrice.label}" id="c6">
+          <af:outputText value="#{row.SuggestedWhlslPrice}" id="ot6">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.ProductVO1.hints.SuggestedWhlslPrice.format}"/>
+          </af:outputText>
+        </af:column>
+      </af:table>
+    </f:facet>
+  </af:decorativeBox>
+</ui:composition>
